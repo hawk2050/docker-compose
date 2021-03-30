@@ -1,0 +1,17 @@
+version: "2.1"
+services:
+  duplicati:
+    image: ghcr.io/linuxserver/duplicati
+    container_name: duplicati
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Pacific/Auckland
+      - CLI_ARGS= #optional
+    volumes:
+      - /home/richard/Containers/duplicati/config:/config
+      - /nfs/Backup:/backups
+      - /media/files:/source
+    ports:
+      - 8200:8200
+    restart: unless-stopped
