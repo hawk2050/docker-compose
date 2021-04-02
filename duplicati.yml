@@ -12,6 +12,7 @@ services:
       - /home/richard/Containers/duplicati/config:/config
       - /nfs/Backup:/backups
       - /media/files:/source
+      - /home/richard:/richard
     ports:
       - 8200:8200
     restart: unless-stopped
