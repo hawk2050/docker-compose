@@ -16,4 +16,5 @@ services:
       - /nfs/TV:/tv
       - /nfs/Movies:/movies
       - /nfs/Music:/music
+      - /media/files/files/homemedia:/homemedia
     restart: unless-stopped
