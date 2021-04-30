@@ -1,0 +1,16 @@
+---
+version: "2.1"
+services:
+  nextcloud:
+    image: ghcr.io/linuxserver/nextcloud
+    container_name: nextcloud
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Pacific/Auckland
+    volumes:
+      - /home/richard/Containers/duplicati/config:/config
+      - /media/files:/data
+    ports:
+      - 443:443
+    restart: unless-stopped
