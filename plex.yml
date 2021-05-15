@@ -17,4 +17,6 @@ services:
       - /nfs/Movies:/movies
       - /nfs/Music:/music
       - /media/files/files/homemedia:/homemedia
+    ports:
+      - 32400:32400
     restart: unless-stopped
