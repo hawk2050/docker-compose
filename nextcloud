@@ -9,7 +9,7 @@ services:
       - PGID=1001
       - TZ=Pacific/Auckland
     volumes:
-      - /home/richard/Containers/duplicati/config:/config
+      - /home/richard/Containers/nextcloud/config:/config
       - /media/files/files/NextCloud:/data
     ports:
       - 443:443
