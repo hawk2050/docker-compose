@@ -2,7 +2,7 @@ version: "2.1"
 services:
   plex:
     image: ghcr.io/linuxserver/plex
-    container_name: plex
+    container_name: Hda3PlexServer
     network_mode: host
     devices:
       - /dev/dri:/dev/dri
@@ -17,6 +17,4 @@ services:
       - /nfs/Movies:/movies
       - /nfs/Music:/music
       - /media/files/files/homemedia:/homemedia
-    ports:
-      - 32400:32400
     restart: unless-stopped
