@@ -1,0 +1,68 @@
+version: '3.1'
+
+services:
+  node-red:
+    image: nodered/node-red:latest
+    environment:
+      - TZ=Pacific/Auckland
+    ports:
+      - "1880:1880"
+    networks:
+      - node-red-net
+    volumes:
+      - /home/pi/Docker/node-red-data:/data
+    restart: unless-stopped
+    
+ influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    ports:
+      - "8083:8083"
+      - "8086:8086"
+      - "8090:8090"
+    environment:
+      - INFLUXDB_DB=sensors
+      - INFLUXDB_USER=telegraf
+      - INFLUXDB_USER_PASSWORD=telegraf
+    volumes:
+      - influxdb-storage:/var/lib/influxdb
+    restart: unless-stopped
+    
+  telegraf:
+    image: telegraf:latest
+    container_name: telegraf
+    links:
+      - influxdb
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    restart: unless-stopped
+      
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    links:
+      - influxdb
+    depends_on:
+      - influxdb
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    restart: unless-stopped
+
+  mosquitto:
+      image: eclipse-mosquitto
+      hostname: mosquitto
+      container_name: mosquitto
+      ports:
+        - "1883:1883"
+        - "9001:9001"
+      restart: unless-stopped
+
+networks:
+  node-red-net:
+
+
+volumes:
+  influxdb-storage:
+  grafana-storage:
