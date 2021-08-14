@@ -3,6 +3,7 @@ version: '3.1'
 services:
   node-red:
     image: nodered/node-red:latest
+    container_name: mynodered
     environment:
       - TZ=Pacific/Auckland
     ports:
@@ -25,7 +26,7 @@ services:
       - INFLUXDB_USER=telegraf
       - INFLUXDB_USER_PASSWORD=telegraf
     volumes:
-      - influxdb-storage:/var/lib/influxdb
+      - /home/pi/Docker/influxdb-data:/data
     restart: unless-stopped
     
   telegraf:
@@ -47,7 +48,7 @@ services:
     depends_on:
       - influxdb
     volumes:
-      - grafana-storage:/var/lib/grafana
+      - /home/pi/Docker/grafana-data:/data
     restart: unless-stopped
 
   mosquitto:
