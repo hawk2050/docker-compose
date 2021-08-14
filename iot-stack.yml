@@ -14,7 +14,7 @@ services:
       - /home/pi/Docker/node-red-data:/data
     restart: unless-stopped
     
- influxdb:
+  influxdb:
     image: influxdb:latest
     container_name: influxdb
     ports:
@@ -62,8 +62,3 @@ services:
 
 networks:
   node-red-net:
-
-
-volumes:
-  influxdb-storage:
-  grafana-storage:
