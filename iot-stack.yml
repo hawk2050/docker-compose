@@ -9,7 +9,7 @@ services:
     ports:
       - "1880:1880"
     networks:
-      - node-red-net
+      - iot-stack-net
     volumes:
       - /home/pi/Docker/node-red-data:/data
     restart: unless-stopped
@@ -21,6 +21,8 @@ services:
       - "8083:8083"
       - "8086:8086"
       - "8090:8090"
+    networks:
+      - iot-stack-net
     environment:
       - INFLUXDB_DB=sensors
       - INFLUXDB_USER=telegraf
@@ -32,6 +34,8 @@ services:
   telegraf:
     image: telegraf:latest
     container_name: telegraf
+    networks:
+      - iot-stack-net
     links:
       - influxdb
     volumes:
@@ -43,6 +47,8 @@ services:
     container_name: grafana
     ports:
       - "3000:3000"
+    networks:
+      - iot-stack-net
     links:
       - influxdb
     depends_on:
@@ -58,7 +64,9 @@ services:
       ports:
         - "1883:1883"
         - "9001:9001"
+      networks:
+      - iot-stack-net
       restart: unless-stopped
 
 networks:
-  node-red-net:
+  iot-stack-net:
