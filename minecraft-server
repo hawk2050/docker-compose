@@ -7,7 +7,10 @@ services:
       - 25565:25565
     environment:
       EULA: "TRUE"
-      MOTD: "Vanilla Minecraft, Chill Vibes Only"
+      SERVER_NAME: "Jakes Minecraft Server"
+      MOTD: "Vanilla Minecraft, Jake Morrison-Clarke"
+      DIFFICULTY: "normal"
+      MAX_PLAYERS: 4
       ENABLE_RCON: "true"
       RCON_PASSWORD: ${RCON_PASSWORD}
       RCON_PORT: 28016
