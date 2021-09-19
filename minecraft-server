@@ -13,12 +13,11 @@ services:
       MAX_PLAYERS: 4
       ENABLE_RCON: "true"
       RCON_PASSWORD: ${RCON_PASSWORD}
+      DISABLE_HEALTHCHECK: "TRUE"
       RCON_PORT: 28016
       PUID: 1000
       PGID: 1001
       MEMORY: "2G"
-    tty: true
-    stdin_open: true
     restart: unless-stopped
     volumes:
       - /home/richard/Containers/minecraft-server/data:/data
