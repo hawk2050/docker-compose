@@ -12,6 +12,7 @@ services:
       DIFFICULTY: "normal"
       MAX_PLAYERS: 4
       ENABLE_RCON: "true"
+      VERSION: "LATEST"
       RCON_PASSWORD: ${RCON_PASSWORD}
       DISABLE_HEALTHCHECK: "TRUE"
       RCON_PORT: 28016
