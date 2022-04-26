@@ -8,7 +8,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1001
-      - TZ=Europe/London
+      - TZ=Pacific/Auckland
       - JELLYFIN_PublishedServerUrl=192.168.1.101 #optional
     volumes:
       - /home/richard/Containers/jellyfin/config:/config
@@ -16,6 +16,7 @@ services:
       - /nfs/Movies:/data/movies
       - /nfs/Music:/data/music
       - /media/files/files/homemedia:/data/homemedia
+      - /media/files/Recordings:/data/recordings
     ports:
       - 8096:8096
       - 8920:8920 #optional
