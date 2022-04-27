@@ -3,6 +3,7 @@ services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin
     container_name: jellyfin
+    network_mode: host
     devices:
       - /dev/dri:/dev/dri
     environment:
