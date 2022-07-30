@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+   
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    ports:
+      - "8083:8083"
+      - "8086:8086"
+      - "8090:8090"
+    networks:
+      - mysensors-net
+    environment:
+      - INFLUXDB_DB=sensors
+      - INFLUXDB_USER=telegraf
+      - INFLUXDB_USER_PASSWORD=telegraf
+    volumes:
+      - /media/files/files/MySensors/influxdb/data:/data
+    restart: unless-stopped
+    
+  telegraf:
+    image: telegraf:latest
+    container_name: telegraf
+    networks:
+      - mysensors-net
+    links:
+      - influxdb
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    restart: unless-stopped
+      
+    
+networks:
+  mysensors-net:
