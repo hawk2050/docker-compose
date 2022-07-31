@@ -6,9 +6,8 @@ services:
     image: influxdb:latest
     container_name: influxdb
     ports:
-      - "8083:8083"
       - "8086:8086"
-      - "8090:8090"
+     
     networks:
       - mysensors-net
     volumes:
@@ -16,7 +15,10 @@ services:
       - /home/richard/Containers/config:/etc/influxdb2:rw
     # # Automatically setup influxdb
     # TODO: not tested...
-    # environment:
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Pacific/Auckland
     #   - DOCKER_INFLUXDB_INIT_MODE=setup
     #   - DOCKER_INFLUXDB_INIT_USERNAME=richard
     #   - DOCKER_INFLUXDB_INIT_PASSWORD=my-password
