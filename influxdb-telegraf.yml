@@ -42,6 +42,8 @@ services:
       - influxdb
     volumes:
       - /home/richard/Containers/telegraf/config/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    depends_on:
+      - influxdb
     restart: unless-stopped
       
     
