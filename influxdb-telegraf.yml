@@ -12,8 +12,8 @@ services:
     networks:
       - mysensors-net
     volumes:
-      - /media/files/files/MySensors/influxdb/data:/var/lib/influxdb2
-      - /home/richard/Containers/config:/etc/influxdb2
+      - /media/files/files/MySensors/influxdb/data:/var/lib/influxdb2:rw
+      - /home/richard/Containers/config:/etc/influxdb2:rw
     # # Automatically setup influxdb
     # TODO: not tested...
     # environment:
