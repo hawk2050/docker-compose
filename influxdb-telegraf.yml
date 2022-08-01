@@ -33,18 +33,18 @@ services:
     
     restart: unless-stopped
     
-  telegraf:
-    image: telegraf:latest
-    container_name: telegraf
-    networks:
-      - mysensors-net
-    links:
-      - influxdb
-    volumes:
-      - /home/richard/Containers/telegraf/config/telegraf.conf:/etc/telegraf/telegraf.conf:ro
-    depends_on:
-      - influxdb
-    restart: unless-stopped
+  #telegraf:
+  #  image: telegraf:latest
+  #  container_name: telegraf
+  #  networks:
+  #    - mysensors-net
+  #  links:
+  #    - influxdb
+  #  volumes:
+  #    - /home/richard/Containers/telegraf/config/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+  #  depends_on:
+  #    - influxdb
+  #  restart: unless-stopped
       
     
 networks:
