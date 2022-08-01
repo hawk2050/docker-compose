@@ -19,11 +19,11 @@ services:
       - PUID=1000
       - PGID=1001
       - TZ=Pacific/Auckland
-    #   - DOCKER_INFLUXDB_INIT_MODE=setup
-    #   - DOCKER_INFLUXDB_INIT_USERNAME=richard
+    #  - DOCKER_INFLUXDB_INIT_MODE=setup
+    #  - DOCKER_INFLUXDB_INIT_USERNAME=richard
     #   - DOCKER_INFLUXDB_INIT_PASSWORD=my-password
-    #   - DOCKER_INFLUXDB_INIT_ORG=my-org
-    #   - DOCKER_INFLUXDB_INIT_BUCKET=mysensors
+    #  - DOCKER_INFLUXDB_INIT_ORG=reynoldsave
+    #  - DOCKER_INFLUXDB_INIT_BUCKET=mysensors
     # # (optional) Configure Data Retention
     #   - DOCKER_INFLUXDB_INIT_RETENTION=1w
     # # (optional) Admin Token
