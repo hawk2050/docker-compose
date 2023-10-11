@@ -13,9 +13,9 @@ services:
       - '8080:80'
       - '8443:443'
     volumes:
-      - '$GITLAB_HOME/config:/etc/gitlab'
-      - '$GITLAB_HOME/logs:/var/log/gitlab'
-      - '$GITLAB_HOME/data:/var/opt/gitlab'
+      - /home/richard/Containers/gitlab/config:/etc/gitlab
+      - /home/richard/Containers/logs:/var/log/gitlab
+      - /home/richard/Containers/data:/var/opt/gitlab
     networks:
       - gitlab
   gitlab-runner:
