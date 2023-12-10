@@ -1,4 +1,4 @@
-# docker-compose.ym
+# docker-compose.yml
 version: '3.7'
 services:
   web:
@@ -10,12 +10,12 @@ services:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://localhost'
     ports:
-      - '8080:80'
-      - '8443:443'
+      - '9080:80'
+      - '5443:443'
     volumes:
       - /home/richard/Containers/gitlab/config:/etc/gitlab
-      - /home/richard/Containers/logs:/var/log/gitlab
-      - /home/richard/Containers/data:/var/opt/gitlab
+      - /home/richard/Containers/gitlab/logs:/var/log/gitlab
+      - /home/richard/Containers/gitlab/data:/var/opt/gitlab
     networks:
       - gitlab
   gitlab-runner:
@@ -26,4 +26,13 @@ services:
       - web
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - '$GITLAB_HOME/gitlab-runner:/etc/gitlab-runner'
+      - /home/richard/Containers/gitlab-runner:/etc/gitlab-runner'
+
+# This allows GitLab to send email straight out of the box without
+  # having to rely on an external provider like SendGrid or MailGun.
+  # It makes an SMTP host available at the hostname "mail".
+  mail:
+    image: bytemark/smtp
+    restart: always
+    networks:
+      - gitlab
