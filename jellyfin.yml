@@ -17,7 +17,7 @@ services:
       - /nfs/Movies:/data/movies
       - /nfs/Music:/data/music
       - /media/files/files/homemedia:/data/homemedia
-      - /media/files/Recordings:/data/recordings
+      
     ports:
       - 8096:8096
       - 8920:8920 #optional
